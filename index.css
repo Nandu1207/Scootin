@@ -1,4 +1,85 @@
-*, body {
-    margin: 0;
-    padding: 0;
+@layer colors {
+    :root {
+       --c-yellow: hsl(40, 97%, 58%);
+       --c-snow: hsl(214, 37%, 96%);
+    }
+}
+
+@layer global{
+    * , body {
+        margin: 0;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        li {
+            list-style-type: none;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+}
+
+@layer header {
+    .header {
+        padding: 20px;
+    }
+    .header-logo {
+        align-self: center;
+    }
+    .header-logo, .header-links {
+        grid-row: 1;
+    }
+    .header-links {
+        display: grid;
+        align-items: center;
+        @media (width > calc(700/16 * 1rem)) {
+            padding-inline-start: 167px;
+        }
+    }
+}
+
+@layer topnav {
+    .topnav {
+        display: flex;
+    }
+    .topnav__links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .topnav__close {
+        @media (width > calc(700/16*1rem)) {
+            display: none;
+        }
+    }
+    .topnav__menu {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@layer button {
+    button {
+        background-color: var(--c-yellow);
+        color: var(--c-snow);
+        border: none;
+        padding: 12px 38px;
+    }
+}
+
+@layer layout {
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr calc(100% - 64px) 1fr; 
+        /* The below styles are for desktop and tablet views */
+        @media (width >= calc(700/16 * 1rem)) {
+            grid-template-columns: 1fr min(calc(100% - 80px), calc(1110 / 16 * 1rem)) 1fr;
+        }
+        > * {
+            grid-column: 2;
+        }
+    }
 }
