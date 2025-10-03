@@ -2,6 +2,22 @@
     :root {
        --c-yellow: hsl(40, 97%, 58%);
        --c-snow: hsl(214, 37%, 96%);
+       --c-light-grey: hsl(216, 17%, 35%);
+       --c-dark-navy: hsl(216, 17%, 35%);
+    }
+}
+
+@layer fonts {
+    @font-face {
+        font-display: swap;
+        font-family: 'Space Mono';
+        font-weight: 700;
+        font-style: normal;
+        src: url("/fonts/space-mono-v17-latin-700.woff2") format('woff2');
+    }
+    :root {
+        --ff-space-mono: 'Space Mono';
+        --fs-15: calc(15 / 16 * 1rem);
     }
 }
 
@@ -59,6 +75,11 @@
         display: flex;
         justify-content: space-between;
     }
+    .topnav__link {
+        font-size: var(--fs-15);
+        font-family: var(--ff-space-mono);
+        color: var(--c-light-grey);
+    }
 }
 
 @layer button {
@@ -67,6 +88,10 @@
         color: var(--c-snow);
         border: none;
         padding: 12px 38px;
+        color: var(--c-dark-navy);
+        font-family: var(--ff-space-mono);
+        font-size: var(--fs-15);
+        cursor: pointer;
     }
 }
 
