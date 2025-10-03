@@ -65,6 +65,11 @@
         align-items: center;
         gap: 1rem;
     }
+    .topnav__open {
+        @media (width > calc(700/16*1rem)) {
+            display: none;
+        }
+    }
     .topnav__close {
         @media (width > calc(700/16*1rem)) {
             display: none;
@@ -83,7 +88,7 @@
 }
 
 @layer button {
-    button {
+    .button {
         background-color: var(--c-yellow);
         color: var(--c-snow);
         border: none;
