@@ -5,6 +5,7 @@
        --c-light-grey: hsl(216, 17%, 35%);
        --c-dark-navy: hsl(216, 17%, 35%);
        --c-xdark-navy: hsl(215, 14%, 23%);
+       --c-black-overlay: hsla(0, 0%, 0%, 0.75);
     }
 }
 
@@ -70,6 +71,14 @@
 @layer topnav {
     .topnav {
         display: flex;
+        &::before{
+            content: '';
+            position: fixed;
+            z-index: -1;
+            opacity: 0;
+            inset: 64px 0px 0px 0px;
+            background-color: var(--c-black-overlay);
+        }
     }
     .topnav__links {
         display: flex;
@@ -103,23 +112,30 @@
     }
     .topnav_menu_content {
         width: 100%;
+    } 
+    .topnav:has(.topnav__open[aria-expanded="true"])::before {
+        opacity: 1;
     }
-    .topnav:has(.topnav__open[aria-expanded="true"]) .topnav_menu_content {
-         @media (width < calc(700 / 16 * 1rem)) {
-            width: auto;
-            inset: 64px 120px 0px 0px;
-            padding: 64px 32px 24px;
-            position: fixed;
-            background-color: var(--c-xdark-navy);
+    .topnav:has(.topnav__open[aria-expanded="true"]) {
+        .topnav_menu_content {
+            @media (width < calc(700 / 16 * 1rem)) {
+                width: auto;
+                inset: 64px 120px 0px 0px;
+                padding: 64px 32px 24px;
+                z-index: 10;
+                position: fixed;
+                background-color: var(--c-xdark-navy);
+            }
+        }
+        .topnav__menu {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            align-items: start;
+            justify-content: space-between;
         }
     }
-    .topnav:has(.topnav__open[aria-expanded="true"]) .topnav__menu {
-        display: flex;
-        height: 100%;
-        flex-direction: column;
-        align-items: start;
-        justify-content: space-between;
-    }
+    
     .topnav__menu {
         display: none;
         /* For desktops */
@@ -134,6 +150,9 @@
         font-size: var(--fs-15);
         font-family: var(--ff-space-mono);
         color: var(--c-light-grey);
+        @media (width < calc(700 / 16 * 1rem)) {
+            color: var(--c-snow);
+        }
     }
 }
 
