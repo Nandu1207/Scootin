@@ -17,15 +17,27 @@
         font-style: normal;
         src: url("/fonts/space-mono-v17-latin-700.woff2") format('woff2');
     }
+    /* lexend-deca-regular - latin */
+    @font-face {
+        font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        src: url('/fonts/lexend-deca-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    }
     :root {
         --ff-space-mono: 'Space Mono';
+        --ff-lexend-deca: 'Lexend Deca'
         --fs-15: calc(15 / 16 * 1rem);
+        --fs-56: calc(56 / 16 * 1rem);
     }
 }
 
 @layer global{
     * , body {
         margin: 0;
+        font-family: var(--ff-lexend-deca);
+        font-size: var(--fs-15);
     }
     ul {
         margin: 0;
@@ -33,6 +45,9 @@
         li {
             list-style-type: none;
         }
+    }
+    h1, h2, h3 {
+        line-height: 1.1;
     }
     a {
         text-decoration: none;
@@ -118,6 +133,7 @@
     }
     .topnav:has(.topnav__open[aria-expanded="true"]) {
         .topnav_menu_content {
+            /* For mobiles */
             @media (width < calc(700 / 16 * 1rem)) {
                 width: auto;
                 inset: 64px 120px 0px 0px;
@@ -180,5 +196,37 @@
         > * {
             grid-column: 2;
         }
+    }
+
+    .fullbleed {
+        grid-column: 1 / -1;
+    }
+}
+
+@layer hero {
+    .hero-img {
+        width: 100%;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        margin-block: auto;
+        max-width: 65ch;
+        align-items: start;
+        h1 {
+            font-family: var(--ff-space-mono);
+            font-size: var(--fs-56);
+            color: var(--c-snow);
+        }
+        p {
+            color: var(--c-snow);
+            margin-block: 24px 32px;
+            line-height: 1.6;
+        }
+    }
+
+    .hero-picture, .hero-content {
+        grid-row: 1;
     }
 }

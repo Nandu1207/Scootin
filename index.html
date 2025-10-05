@@ -34,9 +34,23 @@
                 </div>
             </nav>
         </div>
-        
     </header>
-    <main></main>
+    <main>
+        <div class="hero wrapper">
+            <picture class="hero-picture fullbleed">
+                <source media="(max-width: 700px)" srcset="images/home-hero-mobile.jpg">
+                <source media="(max-width: 1000px)" srcset="images/home-hero-tablet.jpg">
+                <img class="hero-img" src="images/home-hero-desktop.jpg">
+            </picture>
+            <div class="hero-content">
+                <h1>Scooter sharing made simple</h1>
+                <p>Scoot takes the hassle out of urban mobility. Our bikes are placed in convenient
+                    locations in each of our cities. Use our app to locate the nearest bike, unlock
+                    it with a tap, and you’re away!</p>
+                <button class="button">Get Scootin</button>
+            </div>
+        </div>
+    </main>
     <footer></footer>
     <script src="index.js"></script>
 </body>
