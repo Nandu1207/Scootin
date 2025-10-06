@@ -29,6 +29,7 @@
         --ff-space-mono: 'Space Mono';
         --ff-lexend-deca: 'Lexend Deca';
         --fs-15: calc(15 / 16 * 1rem);
+        --fs-40: calc(40 / 16 * 1rem);
         --fs-56: calc(56 / 16 * 1rem);
     }
 }
@@ -56,6 +57,7 @@
     img {
         max-width: 100%;
         height: auto;
+        display: block;
     }
 }
 
@@ -211,9 +213,8 @@
     .hero-content {
         display: flex;
         flex-direction: column;
-        margin-block: auto;
         max-width: 57ch;
-        align-items: start;
+        align-items: center;
         h1 {
             font-family: var(--ff-space-mono);
             font-size: var(--fs-56);
@@ -223,12 +224,33 @@
             color: var(--c-snow);
             font-family: var(--ff-lexend-deca);
             margin-block: 24px 32px;
-            margin-inline-start: 95px;
             line-height: 1.6;
         }
-
         button {
-            margin-inline-start: 95px;
+            margin-inline: 0;
+        }
+        /* For mobiles */
+        @media (width < calc(700 / 16 * 1rem)) {
+            h1 {
+                font-size: var(--fs-40);
+            }
+        }
+        /* For tablets */
+        @media (width < calc(1000 / 16 * 1rem)) {
+            margin: auto;
+            text-align: center;
+        }
+
+        /* For desktops */
+        @media (width > calc(1000 / 16 * 1rem)) {
+            margin-block: auto;
+            align-items: start;
+            button {
+                margin-inline-start: 95px;
+            }
+            p {
+                margin-inline-start: 95px;
+            }
         }
     }
 
@@ -236,11 +258,19 @@
         grid-row: 1;
     }
     .hero-line {
-        margin-block: auto;
-        translate: -140px 31px;
+        display: none;
+        @media (width >= calc(1000 / 16 * 1rem)) {
+            display: block;
+            margin-block: auto;
+            translate: -140px 31px;   
+        }
     }
     .hero-right-arrow {
-        margin-block: auto;
-        translate: 502px 99px;
+        margin-top: auto; 
+        translate: -150px -50px;      
+        @media (width >= calc(1000 / 16 * 1rem)) {
+             margin-block: auto;
+            translate: 502px 99px;
+        }
     }
 }
