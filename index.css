@@ -27,7 +27,7 @@
     }
     :root {
         --ff-space-mono: 'Space Mono';
-        --ff-lexend-deca: 'Lexend Deca'
+        --ff-lexend-deca: 'Lexend Deca';
         --fs-15: calc(15 / 16 * 1rem);
         --fs-56: calc(56 / 16 * 1rem);
     }
@@ -212,7 +212,7 @@
         display: flex;
         flex-direction: column;
         margin-block: auto;
-        max-width: 65ch;
+        max-width: 57ch;
         align-items: start;
         h1 {
             font-family: var(--ff-space-mono);
@@ -221,12 +221,26 @@
         }
         p {
             color: var(--c-snow);
+            font-family: var(--ff-lexend-deca);
             margin-block: 24px 32px;
+            margin-inline-start: 95px;
             line-height: 1.6;
+        }
+
+        button {
+            margin-inline-start: 95px;
         }
     }
 
-    .hero-picture, .hero-content {
+    .hero-picture, .hero-content, .hero-line, .hero-right-arrow {
         grid-row: 1;
+    }
+    .hero-line {
+        margin-block: auto;
+        translate: -140px 31px;
+    }
+    .hero-right-arrow {
+        margin-block: auto;
+        translate: 502px 99px;
     }
 }
